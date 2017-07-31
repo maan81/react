@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>thenewboston</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+
+	<div id="content"></div>
+
+	<script type="text/jsx">
+		var BuckysComponent = React.createClass({
+			render : function(){
+				return (
+					<h2>My name is Bucky</h2>
+				);
+			}
+		});
+
+		React.render(<BuckysComponent/>,document.getElementById('content'));
+	</script>
+
+</body>
+</html>
