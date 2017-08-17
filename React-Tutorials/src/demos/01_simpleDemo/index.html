@@ -14,7 +14,17 @@
 
 
     <script type="text/babel">
-        ReactDOM.render(<h1>Bucky</h1>,document.getElementById('example'));
+
+        var Bacon = React.createClass({
+            render : function(){
+                return (
+                    <h3>This is a simple component</h3>
+                );
+            }
+        });
+
+        ReactDOM.render(<Bacon />,document.getElementById('example'));
+
     </script>
 
 </body>
