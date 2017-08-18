@@ -18,10 +18,10 @@
 
         var Comment = React.createClass({
             edit: function(){
-                alert('Editing comment');
+                alert('Editing comment '+this.props.children);
             },
             remove: function(){
-                alert('Removing comment')
+                alert('Removing comment '+this.props.children)
             },
             render: function(){
                 return (
