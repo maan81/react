@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>React - Template</title>
     <link rel="stylesheet" type="text/css" href="../../css/main.css">
-    <script src="../../js/react.min.js"></script>
+    <!-- <script src="../../js/react.min.js"></script> -->
+    <script src="../../js/react.js"></script>
     <script src="../../js/react-dom.min.js"></script>
     <script src="../../js/browser.min.js"></script>
 </head>
@@ -60,12 +61,34 @@
             }
         });
 
+
+        var Board = React.createClass({
+            getInitialState: function(){
+                return {
+                    comments:[
+                        'aaa',
+                        'bbb',
+                        'ccc'
+                    ]
+                };
+            },
+            render: function(){
+                return (
+                    <div className="board">
+                        {
+                            this.state.comments.map(function(item,index){
+                                return (
+                                    <Comment key={index}>{item}</Comment>
+                                );
+                            })
+                        }
+                    </div>
+                );
+            }
+        });
+
         ReactDOM.render(
-            <div className="board">
-                <Comment>aaa</Comment>
-                <Comment>bbb</Comment>
-                <Comment>ccc</Comment>
-            </div>
+            <Board />
             ,
             document.getElementById('container')
         );
