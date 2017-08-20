@@ -22,17 +22,14 @@
                 return {editing: false};
             },
             edit: function(){
-                // alert('Editing comment '+this.props.children);
                 this.setState({editing: true});
             },
             remove: function(){
-                // alert('Removing comment '+this.props.children)
                 console.log('Removing comment '+this.props.children)
                 this.props.deleteFromBoard(this.props.index);
             },
             save: function(){
-                var val = this.refs.newText.value;
-                console.log(val);
+                this.props.updateCommentText(this.refs.newText.value, this.props.index);
                 this.setState({editing: false});
             },
             renderNormal: function(){
@@ -78,9 +75,15 @@
                 arr.splice(index,1);
                 this.setState({comments: arr});
             },
+            updateComment: function(newText,index){
+                console.log(newText)
+                var arr = this.state.comments;
+                arr[index] = newText;
+                this.setState({comments: arr});
+            },
             eachComment: function(item,index){
                 return (
-                    <Comment key={index} index={index} deleteFromBoard={this.removeComment}>
+                    <Comment key={index} index={index} deleteFromBoard={this.removeComment} updateCommentText={this.updateComment}>
                         {item}
                     </Comment>
                 );
