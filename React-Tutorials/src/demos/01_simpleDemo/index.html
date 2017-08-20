@@ -28,6 +28,7 @@
             remove: function(){
                 // alert('Removing comment '+this.props.children)
                 console.log('Removing comment '+this.props.children)
+                this.props.deleteFromBoard(this.props.index);
             },
             save: function(){
                 var val = this.refs.newText.value;
@@ -72,16 +73,22 @@
                     ]
                 };
             },
+            removeComment: function(index){
+                var arr = this.state.comments;
+                arr.splice(index,1);
+                this.setState({comments: arr});
+            },
+            eachComment: function(item,index){
+                return (
+                    <Comment key={index} index={index} deleteFromBoard={this.removeComment}>
+                        {item}
+                    </Comment>
+                );
+            },
             render: function(){
                 return (
                     <div className="board">
-                        {
-                            this.state.comments.map(function(item,index){
-                                return (
-                                    <Comment key={index}>{item}</Comment>
-                                );
-                            })
-                        }
+                        {this.state.comments.map(this.eachComment)}
                     </div>
                 );
             }
