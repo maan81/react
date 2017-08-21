@@ -70,6 +70,13 @@
                     ]
                 };
             },
+            add: function(newText){
+                var arr = this.state.comments;
+                arr.push(newText);
+                this.setState({
+                    comments: arr
+                });
+            },
             removeComment: function(index){
                 var arr = this.state.comments;
                 arr.splice(index,1);
@@ -90,8 +97,11 @@
             },
             render: function(){
                 return (
-                    <div className="board">
-                        {this.state.comments.map(this.eachComment)}
+                    <div>
+                        <button className="button-info purple" onClick={this.add.bind(null,'Default Text')}>Add</button>
+                        <div className="board">
+                            {this.state.comments.map(this.eachComment)}
+                        </div>
                     </div>
                 );
             }
